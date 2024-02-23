@@ -10,18 +10,18 @@
  * else - Pointer to the created node.
  */
 
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
+binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 {
 binary_tree_t *lumina;
 lumia = (binary_tree_ t *)malloc(sizeof(*lumina));
 
 if (!lumina)
-	return NULL
+	return NULL;
 
-(*lumina).parent
-(*lumina).value
-(*lumina).left
-(*lumina).right
+(*lumina).parent;
+(*lumina).value;
+(*lumina).left;
+(*lumina).right;
 
 return (lumina);
 }
