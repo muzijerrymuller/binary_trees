@@ -18,10 +18,9 @@ lumia = (binary_tree_ t *)malloc(sizeof(*lumina));
 if (!lumina)
 	return NULL;
 
-(*lumina).value;
-(*lumina).parent;
-(*lumina).left;
-(*lumina).right;
-
+	lumina->parent = parent;
+	lumina->value = value;
+	lumina->left = NULL;
+	lumina->right = NULL;
 return (lumina);
 }
