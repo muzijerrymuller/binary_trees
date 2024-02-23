@@ -18,8 +18,8 @@ lumia = (binary_tree_ t *)malloc(sizeof(*lumina));
 if (!lumina)
 	return NULL;
 
-(*lumina).parent;
 (*lumina).value;
+(*lumina).parent;
 (*lumina).left;
 (*lumina).right;
 
