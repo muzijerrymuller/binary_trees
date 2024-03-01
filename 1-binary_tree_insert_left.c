@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "binary_trees.h"
 
 /**
  * binary_tree_insert_left - A pointer to the node where
@@ -10,14 +11,22 @@
  * else Null
  */
 
-binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
+binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
 binary_tree_t *element;
 
-binary_tree_t *element = malloc(sizeof(binary_tree_t));
+if (parent == NULL)
+return (NULL);
+
+element = malloc(sizeof(binary_tree_t));
 
 if (element == NULL)
-	return (NULL);
+return (NULL);
+
+element->n = value;
+element->parent = parent;
+element->left = NULL;
+element->right = NULL;
 
 if (parent->left != NULL)
 	{
