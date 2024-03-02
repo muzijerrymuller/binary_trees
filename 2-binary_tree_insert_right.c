@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "binary_trees.h"
 
 /**
@@ -11,10 +10,12 @@
 
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
+	binary_tree_t *element;
+
 	if (parent == NULL)
 		return (NULL);
 
-	binary_tree_t *element = malloc(sizeof(binary_tree_t));
+element = binary_tree_node(parent, value);
 
 	if (element == NULL)
 	{
