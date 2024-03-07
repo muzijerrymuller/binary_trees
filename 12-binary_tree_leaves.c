@@ -1,5 +1,4 @@
 #include "binary_trees.h"
-#include <stddef.h>
 
 /**
  * binary_tree_leaves - Checks how many leaves there rae in a binary tree.
