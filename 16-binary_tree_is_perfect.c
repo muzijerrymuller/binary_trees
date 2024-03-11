@@ -1,99 +1,63 @@
 #include "binary_trees.h"
 
-int binary_tree_is_full(const binary_tree_t *tree);
-
 /**
- * binary_tree_is_perfect - This fucntion checks if a tree is perfect.
- * @tree: pointer that will help us check if tree is perfect.
- *
- * Return: whether binary tree is perfect else 0.
+ * binary_tree_is_leaf - Function checks if the node is a leaf.
+ * @node: points to the node that will allow us to check.
+ * Return: 1 if leaf else 0.
  */
-
-size_t binary_tree_height(const binary_tree_t *tree)
+int binary_tree_is_leaf(const binary_tree_t *node)
 {
-        if (tree == NULL)
-                return (0);
-        {
-                size_t b = 0;
-                size_t a = 0;
+if (node == NULL)
+        return (0);
 
-                b = tree->left ? 1 + binary_tree_height(tree->left) : 1;
-                a = tree->right ? 1 + binary_tree_height(tree->right) : 1;
+if (!node->left && !node->right)
+        return (1);
 
-                return ((b > a) ? b : a);
-        }
+else
         return (0);
 }
 
 /**
- * binary_tree_is_perfect - This fucntion checks if a tree is perfect.
- * @tree: pointer that will help us check if tree is perfect.
+ * binary_tree_height - Binary tree height.
+ * @tree: Pointer the node that will allow us to check.
  *
- * Return: whether binary tree is perfect else 0.
+ * Return: tree height else 0.
  */
+size_t binary_tree_height(const binary_tree_t *tree)
+{
+	size_t a, b;
 
-int binary_tree_is_full(const binary_tree_t *tree)
-{
-int l = 0, r = 0;
-
-if (tree == NULL)
-{
-return (0);
+	if (tree == NULL || binary_tree_is_leaf(tree))
+		return (0);
+	a = binary_tree_height(tree->left);
+	b = binary_tree_height(tree->right);
+	if (a >= b)
+		return (1 + a);
+	return (1 + b);
 }
-else if (tree->left == NULL && tree->right == NULL)
-return (1);
-
-else
-{
-if (tree->left && tree->right)
-{
-l = binary_tree_is_full(tree->left);
-r = binary_tree_is_full(tree->right);
-if (l == 0 || r == 0)
-{
-return (0);
-}
-return (1);
-}
-else if (!tree->left && !tree->right)
-{
-return (1);
-}
-else
-{
-return (0);
-}
-}
-}
-
 
 /**
- * binary_tree_is_perfect - This fucntion checks if a tree is perfect.
- * @tree: pointer that will help us check if tree is perfect.
+ * binary_tree_is_perfect - checks if a binary tree is perfect
+ * @tree: pointer to the node that will allot us to check.
  *
- * Return: whether binary tree is perfect else 0.
+ * Return: 1 If it is a perfect binary tree else 0.
  */
-
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-if (tree == NULL)
+	binary_tree_t *a, *b;
+
+	if (tree == NULL)
+		return (0);
+	a = tree->left;
+	b = tree->right;
+	if (binary_tree_is_leaf(tree))
+		return (1);
+	if (a == NULL || b == NULL)
+		return (0);
+	if (binary_tree_height(a) == binary_tree_height(b))
+	{
+		if (binary_tree_is_perfect(a) && binary_tree_is_perfect(b))
+			return (1);
+	}
 	return (0);
-
-size_t a = 0;
-size_t b = 0;
-int c = 0;
-int d = 0;
-
-a = binary_tree_height(tree->left);
-b = binary_tree_height(tree->right);
-
-if (a == b)
-{
-c = binary_tree_is_perfect(tree->left);
-d = binary_tree_is_perfect(tree->right);
-
-return (c && d) &&
-	binary_tree_is_full(tree->left) && binary_tree_is_full(tree->left);
-}
-return (0);
 }
